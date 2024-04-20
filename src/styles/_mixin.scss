@@ -1,0 +1,6 @@
+@use "./constants" as *;
+@use "./functions" as *;
+
+@mixin fontFamilyClass {
+  font-family: Montserrat !important;
+}
