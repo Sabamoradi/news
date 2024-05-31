@@ -7,7 +7,7 @@ interface Props {
 
 const MainLayout = (props: Props) => {
   const { children } = props;
-  return <div className="main">
+  return <div className="container main">
     <Header/>
     {children}
   </div>;

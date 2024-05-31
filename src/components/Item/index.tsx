@@ -1,20 +1,21 @@
-const Item = () =>{
-  return(
+import "./style.scss";
+
+const Item = () => {
+  return (
     <div className="item_wrapper">
-      <div className="img_wrapper"> 
+      <div className="img_wrapper">
         <img src="" alt="" />
       </div>
-      <div className="text">
-        <p className="title"></p>
-        <p className="desc">
-
+      <div className="text_wrapper">
+        <p className="title">
+          West Virginia Sen. Joe Manchin registers as an independent
         </p>
-        <div className="other">
-
-        </div>
+        <p className="desc">
+          Live updates: Trump found guilty in hush money trial
+        </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Item;
