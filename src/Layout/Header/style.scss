@@ -1,0 +1,13 @@
+@use "src/styles/main.scss" as *;
+
+
+.header_container{
+    padding: toRem(20) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .input_wrapper{
+        width: 60%;
+        padding-right: toRem(20);
+    }
+}
