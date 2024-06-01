@@ -27,4 +27,7 @@ export const timesSlice = createSlice({
 
 export const { setTimesData } = timesSlice.actions;
 
+export const selectTimesData = (state: ReduxState) =>
+  state.times.timesData;
+
 export default timesSlice.reducer;

@@ -25,6 +25,6 @@ export const guardianSlice = createSlice({
 
 
 
-export const selectNewsApiData = (state: ReduxState) =>
+export const selectGuardianData = (state: ReduxState) =>
   state.guardian.GuardianData;
 export default guardianSlice.reducer;

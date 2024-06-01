@@ -4,7 +4,7 @@ import { getNewsApiData } from "./api";
 export const getNewsAPiThunk = createAppAsyncThunk(
   "general/getNewsApiData",
   async () => {
-    const response = (await getNewsApiData()).data;
+    const response = (await getNewsApiData()).data.articles;
     return response;
   }
 );

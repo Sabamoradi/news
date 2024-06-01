@@ -2,14 +2,22 @@
 
 .item_wrapper {
   border-top: toRem(1) solid $gray-e3;
+  &:first-child{
+    border-top-color:transparent;
+  }
   padding: toRem(10) 0;
   display: flex;
   align-items: center;
   .img_wrapper {
     width: toRem(280);
     height: toRem(168);
-    background-color: red;
     border-radius: toRem(12);
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: toRem(12);
+    }
   }
   .text_wrapper {
     padding-left: toRem(10);
