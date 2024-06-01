@@ -2,6 +2,8 @@ import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
 import newsApiSlice from "./newApi/slice";
 import guardianSlice from "./guardian/slice";
 import timesSlice from "./times/slice";
+import generalSlice from "./general/slice";
+
 import {
   type TypedUseSelectorHook,
   useSelector as useReduxSelector,
@@ -12,7 +14,8 @@ export const store = configureStore({
   reducer: {
     newsApi: newsApiSlice,
     guardian:guardianSlice,
-    times:timesSlice
+    times:timesSlice,
+    general:generalSlice
   },
 });
 

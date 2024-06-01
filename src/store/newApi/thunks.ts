@@ -1,10 +1,20 @@
 import { createAppAsyncThunk } from "../appAsyncThunk";
-import { getNewsApiData } from "./api";
+import { getNewsApiData, getsearchData } from "./api";
 
 export const getNewsAPiThunk = createAppAsyncThunk(
-  "general/getNewsApiData",
+  "newApi/getNewsApiData",
   async () => {
     const response = (await getNewsApiData()).data.articles;
+    return response;
+  }
+);
+
+export const getNewsAPiSearchThunk = createAppAsyncThunk(
+  "newApi/getsearchData",
+  async (data:string) => {
+    
+    const response = (await getsearchData(data)).data.articles;
+    console.log(response);
     return response;
   }
 );

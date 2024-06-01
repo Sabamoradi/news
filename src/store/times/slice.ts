@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ReduxState } from "../store";
-import { getTimesDataThunk } from "./thunks";
+import { getTimesDataThunk, getTimesSearchDataThunk } from "./thunks";
+import { getTimesSearchData } from "./api";
 
 export interface State {
   timesData: any;
@@ -20,6 +21,9 @@ export const timesSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(getTimesDataThunk.fulfilled, (state, action) => {
+      state.timesData = action.payload;
+    });
+    builder.addCase(getTimesSearchDataThunk.fulfilled, (state, action) => {
       state.timesData = action.payload;
     });
   },

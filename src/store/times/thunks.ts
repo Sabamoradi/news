@@ -1,10 +1,18 @@
 import { createAppAsyncThunk } from "../appAsyncThunk";
-import { getTimesData } from "./api";
+import { getTimesData, getTimesSearchData } from "./api";
 
 export const getTimesDataThunk = createAppAsyncThunk(
-  "general/getTimesData",
+  "times/getTimesData",
   async () => {
     const response = (await getTimesData()).data.results;
+    return response;
+  }
+);
+
+export const getTimesSearchDataThunk = createAppAsyncThunk(
+  "times/getTimesSearchData",
+  async (data:string) => {
+    const response = (await getTimesSearchData(data)).data.results;
     return response;
   }
 );
