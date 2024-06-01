@@ -1,21 +1,61 @@
 import axios from "axios";
 
-const apiFirstBaseURL = 'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=1038e30893ee46d296c0e6e36a8bdbfc'; // newsapi
-const apiSecondBaseURL = 'https://content.guardianapis.com/search?page=1&api-key=f00667d7-6940-435f-8d7e-de4d135651ef';  //The Guardian
-const apiThird = 'https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=vwjNDWt6gDLhcFNaeuzhCUcQpdI1FAOP' //times
+const apiFirstBaseURL = 'https://newsapi.org/v2'; // newsapi
+const apiSecondBaseURL = 'https://content.guardianapis.com';  //The Guardian
+const apiThird = 'https://api.nytimes.com' //times
 
-export const httpService = axios.create({
+export const httpNewsApiService = axios.create({
   baseURL: apiFirstBaseURL,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-httpService.interceptors.request.use(async (config: any) => {
+export const httpGuardianService = axios.create({
+  baseURL: apiSecondBaseURL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+export const httpTimesService = axios.create({
+  baseURL: apiThird,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+httpNewsApiService.interceptors.request.use(async (config: any) => {
+  return config;
+});
+httpGuardianService.interceptors.request.use(async (config: any) => {
+  return config;
+});
+httpTimesService.interceptors.request.use(async (config: any) => {
   return config;
 });
 
-httpService.interceptors.response.use(
+httpNewsApiService.interceptors.response.use(
+  function (response: any) {
+    return response;
+  },
+  function (error: any) {
+    console.log(error);
+
+    return Promise.reject(error);
+  }
+);
+httpGuardianService.interceptors.response.use(
+  function (response: any) {
+    return response;
+  },
+  function (error: any) {
+    console.log(error);
+
+    return Promise.reject(error);
+  }
+);
+httpTimesService.interceptors.response.use(
   function (response: any) {
     return response;
   },
