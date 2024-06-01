@@ -1,0 +1,9 @@
+@use "src/styles/main.scss" as *;
+
+.personal_container {
+  @include MainClass;
+  width: 20%;
+  h3{
+    font-size: toRem(16);
+  }
+}

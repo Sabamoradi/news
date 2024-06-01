@@ -4,3 +4,10 @@
 @mixin fontFamilyClass {
   font-family: Montserrat !important;
 }
+
+@mixin MainClass {
+  border-radius: 18px;
+  background-color: pink;
+  margin-top: 20px;
+  padding: 12px;
+}
