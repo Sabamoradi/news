@@ -1,25 +1,75 @@
 import Item from "../../components/Item";
+import { selectShowGuardian } from "../../store/guardian/slice";
+import { selectShowNewsOrg } from "../../store/newApi/slice";
+import { useSelector } from "../../store/store";
+import { selectShowTimes } from "../../store/times/slice";
 import "./style.scss";
 
 interface Props {
   newsApiItem: any;
-  guardianItems:any;
-  selectorTimesApi:any;
+  guardianItems: any;
+  selectorTimesApi: any;
 }
 
 const MainItems = (props: Props) => {
-  const { newsApiItem,guardianItems,selectorTimesApi } = props;
+  const { newsApiItem, guardianItems, selectorTimesApi } = props;
+
+  const showGuardian = useSelector(selectShowGuardian);
+  const showNewsOrg = useSelector(selectShowNewsOrg);
+  const showTimes = useSelector(selectShowTimes);
+
   return (
     <div className="main_container">
-      {newsApiItem.map((el:any,index:number) => {
-        return <Item key={`${index}-news`} title={el.title} author={el.author}/>;
-      })}
-      {guardianItems.map((el:any,index:number) => {
-        return <Item key={`${index}-newsG`} title={el.webTitle} author={el.author}/>;
-      })}
-      {selectorTimesApi.map((el:any,index:number) => {
-        return <Item key={`${index}-newsT`} title={el.title} author={el.source}/>;
-      })}
+      <div className="main_wrapper">
+        {showNewsOrg !== false && (
+          <>
+            <p className="title_news">news.org</p>
+            {newsApiItem.map((el: any, index: number) => {
+              return (
+                <Item
+                  key={`${index}-news`}
+                  title={el.title}
+                  author={el.author}
+                />
+              );
+            })}
+          </>
+        )}
+      </div>
+      <div className="main_wrapper">
+        {showGuardian !== false && (
+          <>
+            <p className="title_news">Guardian</p>
+            {guardianItems.map((el: any, index: number) => {
+              return (
+                <>
+                  <Item
+                    key={`${index}-newsG`}
+                    title={el.webTitle}
+                    author={el.author}
+                  />
+                </>
+              );
+            })}
+          </>
+        )}
+      </div>
+      <div className="main_wrapper">
+        {showTimes !== false && (
+          <>
+            <p className="title_news">Times</p>
+            {selectorTimesApi.map((el: any, index: number) => {
+              return (
+                <Item
+                  key={`${index}-newsT`}
+                  title={el.title}
+                  author={el.source}
+                />
+              );
+            })}
+          </>
+        )}
+      </div>
     </div>
   );
 };

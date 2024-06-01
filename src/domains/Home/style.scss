@@ -5,5 +5,5 @@
 }
 .home_item_wrapper{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 }

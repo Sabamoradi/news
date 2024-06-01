@@ -1,9 +1,9 @@
 @use "src/styles/main.scss" as *;
 
 .item_wrapper {
-  border-top: toRem(1) solid $gray-e3;
-  &:first-child{
-    border-top-color:transparent;
+  border-bottom: toRem(1) solid $gray-e3;
+  &:last-child{
+    border-bottom-color:transparent;
   }
   padding: toRem(10) 0;
   display: flex;

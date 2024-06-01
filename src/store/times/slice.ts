@@ -5,10 +5,12 @@ import { getTimesSearchData } from "./api";
 
 export interface State {
   timesData: any;
+  showTimes:boolean | null
 }
 
 const initialState: State = {
   timesData: [],
+  showTimes:null
 };
 
 export const timesSlice = createSlice({
@@ -17,6 +19,9 @@ export const timesSlice = createSlice({
   reducers: {
     setTimesData: (state, action) => {
       state.timesData = action.payload;
+    },
+    setShowTimes: (state, action) => {
+      state.showTimes = action.payload;
     },
   },
   extraReducers(builder) {
@@ -29,9 +34,11 @@ export const timesSlice = createSlice({
   },
 });
 
-export const { setTimesData } = timesSlice.actions;
+export const { setTimesData , setShowTimes } = timesSlice.actions;
 
 export const selectTimesData = (state: ReduxState) =>
   state.times.timesData;
+export const selectShowTimes = (state: ReduxState) =>
+  state.times.showTimes;
 
 export default timesSlice.reducer;

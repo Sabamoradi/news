@@ -3,6 +3,14 @@
 .main_container {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
   @include MainClass;
+  .main_wrapper{
+    .title_news{
+      font-size: toRem(20);
+      font-weight: 500;
+      color: $red;
+      margin: toRem(10);
+    }
+  }
 }

@@ -5,12 +5,14 @@ import { getNewsAPiSearchThunk, getNewsAPiThunk } from "./thunks";
 
 export interface State {
   newsApiData: any;
-  newsApiSearch:any
+  newsApiSearch:any;
+  showNewsOrg:boolean | null
 }
 
 const initialState: State = {
   newsApiData: [],
-  newsApiSearch:[]
+  newsApiSearch:[],
+  showNewsOrg:null
 };
 
 export const newsAPiSlice = createSlice({
@@ -19,6 +21,9 @@ export const newsAPiSlice = createSlice({
   reducers: {
     setNewsApiData: (state, action) => {
       state.newsApiData = action.payload;
+    },
+    setShowNewsOrg: (state, action) => {
+      state.showNewsOrg = action.payload;
     },
   },
   extraReducers(builder) {
@@ -31,10 +36,12 @@ export const newsAPiSlice = createSlice({
   },
 });
 
-export const { setNewsApiData } = newsAPiSlice.actions;
+export const { setNewsApiData,setShowNewsOrg } = newsAPiSlice.actions;
 
 export const selectNewsApiData = (state: ReduxState) =>
   state.newsApi.newsApiData;
 export const selectNewsApiSearchData = (state: ReduxState) =>
   state.newsApi.newsApiSearch;
+export const selectShowNewsOrg = (state: ReduxState) =>
+  state.newsApi.showNewsOrg;
 export default newsAPiSlice.reducer;

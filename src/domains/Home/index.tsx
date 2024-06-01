@@ -28,8 +28,8 @@ const Home = () => {
       <div className="home_container">
         <h2 className="home_header">News</h2>
         <div className="home_item_wrapper">
-          <MainItems newsApiItem={selectorNewsApi} guardianItems={selectorGuardianApi} selectorTimesApi={selectorTimesApi}/>
           <PersonalSection />
+          <MainItems newsApiItem={selectorNewsApi} guardianItems={selectorGuardianApi} selectorTimesApi={selectorTimesApi}/>
         </div>
       </div>
     </div>
