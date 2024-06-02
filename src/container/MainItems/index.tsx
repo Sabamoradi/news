@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import Item from "../../components/Item";
 import { selectShowGuardian } from "../../store/guardian/slice";
 import { selectShowNewsOrg } from "../../store/newApi/slice";
 import { useSelector } from "../../store/store";
 import { selectShowTimes } from "../../store/times/slice";
 import "./style.scss";
+import { newsApiCategories } from "../../configs/mainConfig";
+import { useDispatch } from "react-redux";
+import { setAllCategories } from "../../store/general/slice";
 
 interface Props {
   newsApiItem: any;
@@ -17,6 +21,22 @@ const MainItems = (props: Props) => {
   const showGuardian = useSelector(selectShowGuardian);
   const showNewsOrg = useSelector(selectShowNewsOrg);
   const showTimes = useSelector(selectShowTimes);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const guardianCat = guardianItems.map((el: any) => el.pillarName);
+    const timesCat = selectorTimesApi.map((el: any) => el.section);
+    let allCategories = newsApiCategories.concat(guardianCat, timesCat);
+
+    allCategories = allCategories.filter(function (
+      item: any,
+      index: number,
+      inputArray: any
+    ) {
+      return inputArray.indexOf(item) == index;
+    });
+    dispatch(setAllCategories(allCategories));
+  }, [newsApiItem, guardianItems, selectorTimesApi]);
 
   return (
     <div className="main_container">

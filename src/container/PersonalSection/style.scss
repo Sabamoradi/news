@@ -11,8 +11,9 @@
     .bottom_item_wrapper {
       display: flex;
       margin-top: toRem(10);
+      flex-wrap: wrap;
       .item_data {
-        padding-right: toRem(20);
+        padding:toRem(5)  toRem(20) 0  toRem(0);
         display: flex;
         align-items: center;
         .select_item {

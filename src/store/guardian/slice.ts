@@ -3,13 +3,15 @@ import { ReduxState } from "../store";
 import { getGuardianDataThunk } from "./thunks";
 
 export interface State {
-    GuardianData: any;
-    showGuardian:boolean | null
+  GuardianData: any;
+  showGuardian: boolean | null;
+  guardianCategories: string[];
 }
 
 const initialState: State = {
   GuardianData: [],
-  showGuardian:null
+  showGuardian: null,
+  guardianCategories: [],
 };
 
 export const guardianSlice = createSlice({
@@ -18,22 +20,27 @@ export const guardianSlice = createSlice({
   reducers: {
     setShowGuardian: (state, action) => {
       state.showGuardian = action.payload;
-      console.log(state.showGuardian);
-      
+    },
+    setGuardianCtageories: (state, action) => {
+      state.guardianCategories = action.payload;
+    },
+    setGuardianData: (state, action) => {
+      state.GuardianData = action.payload;
     },
   },
   extraReducers(builder) {
-    builder.addCase(getGuardianDataThunk.fulfilled, (state,action) => {
+    builder.addCase(getGuardianDataThunk.fulfilled, (state, action) => {
       state.GuardianData = action.payload;
     });
   },
 });
 
-
-export const { setShowGuardian } = guardianSlice.actions;
+export const { setShowGuardian,setGuardianCtageories,setGuardianData } = guardianSlice.actions;
 
 export const selectGuardianData = (state: ReduxState) =>
   state.guardian.GuardianData;
 export const selectShowGuardian = (state: ReduxState) =>
   state.guardian.showGuardian;
+export const selectGuardianCategories = (state: ReduxState) =>
+  state.guardian.guardianCategories;
 export default guardianSlice.reducer;
