@@ -7,12 +7,14 @@ export interface State {
   GuardianData: GuardianData[];
   showGuardian: boolean | null;
   guardianCategories: string[];
+  guardianSkeleton:boolean
 }
 
 const initialState: State = {
   GuardianData: [],
   showGuardian: null,
   guardianCategories: [],
+  guardianSkeleton:false
 };
 
 export const guardianSlice = createSlice({
@@ -30,8 +32,12 @@ export const guardianSlice = createSlice({
     },
   },
   extraReducers(builder) {
+    builder.addCase(getGuardianDataThunk.pending, (state, action) => {
+      state.guardianSkeleton = true;
+    });
     builder.addCase(getGuardianDataThunk.fulfilled, (state, action) => {
       state.GuardianData = action.payload;
+      state.guardianSkeleton = false;
     });
   },
 });
@@ -44,4 +50,6 @@ export const selectShowGuardian = (state: ReduxState) =>
   state.guardian.showGuardian;
 export const selectGuardianCategories = (state: ReduxState) =>
   state.guardian.guardianCategories;
+export const selectGuardianSkeleton = (state: ReduxState) =>
+  state.guardian.guardianSkeleton;
 export default guardianSlice.reducer;

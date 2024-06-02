@@ -16,6 +16,7 @@
         padding:toRem(5)  toRem(20) 0  toRem(0);
         display: flex;
         align-items: center;
+        min-width: 20%;
         .select_item {
           width: toRem(10);
           height: toRem(10);
