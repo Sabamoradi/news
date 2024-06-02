@@ -1,0 +1,42 @@
+@use "src/styles/main.scss" as *;
+
+.personal_container {
+  @include MainClass;
+  width: 100%;
+  h3 {
+    font-size: toRem(16);
+  }
+  .bottom_Section {
+    margin-top: toRem(20);
+    .bottom_item_wrapper {
+      display: flex;
+      margin-top: toRem(10);
+      flex-wrap: wrap;
+      .item_data {
+        padding:toRem(5)  toRem(20) 0  toRem(0);
+        display: flex;
+        align-items: center;
+        .select_item {
+          width: toRem(10);
+          height: toRem(10);
+          display: block;
+          background-color: transparent;
+          border: 1px solid $gray-44;
+          border-radius: 50%;
+          &.active{
+            background-color: $red;
+            border-color: $red;
+          }
+        }
+        .bottom_item_text {
+          padding-left: toRem(10);
+        }
+      }
+    }
+    .item_title {
+      font-size: toRem(16);
+      font-weight: 500;
+      color: $red;
+    }
+  }
+}

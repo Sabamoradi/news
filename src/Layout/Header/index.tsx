@@ -6,12 +6,16 @@ import { useDispatch } from "../../store/store";
 import { setSearchData } from "../../store/general/slice";
 import { getNewsAPiSearchThunk } from "../../store/newApi/thunks";
 import { getGuardianDataThunk } from "../../store/guardian/thunks";
-import { getTimesSearchDataThunk } from "../../store/times/thunks";
+import { useNavigate, useLocation } from "react-router-dom";
+import { MenuItem, menuItem } from "../../configs/mainConfig";
 
 const { Search } = Input;
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   const onSearch: SearchProps["onSearch"] = (value, _e, info) => {
     dispatch(setSearchData(value));
     if (value.length > 0) {
@@ -30,6 +34,15 @@ const Header = () => {
           size="large"
           onSearch={onSearch}
         />
+      </div>
+      <div className="menu_wrapper">
+        {menuItem.map((el: MenuItem) => {
+          return (
+            <div className="menu_item" key={el.id} onClick={() => navigate(el.route)}  data-is-selected={el.route === pathname}>
+              <p>{el.title}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

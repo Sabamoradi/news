@@ -10,9 +10,9 @@ import { useDispatch } from "react-redux";
 import { setAllCategories } from "../../store/general/slice";
 
 interface Props {
-  newsApiItem: any;
-  guardianItems: any;
-  selectorTimesApi: any;
+  newsApiItem?: any;
+  guardianItems?: any;
+  selectorTimesApi?: any;
 }
 
 const MainItems = (props: Props) => {

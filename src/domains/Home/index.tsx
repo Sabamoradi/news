@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import MainItems from "../../container/MainItems";
-import PersonalSection from "../../container/PersonalSection";
+import Filter from "../../container/Filter";
 import "./style.scss";
 import { setNewsApiData } from "../../store/newApi/slice";
 import { getNewsAPiThunk } from "../../store/newApi/thunks";
@@ -28,8 +28,11 @@ const Home = () => {
       <div className="home_container">
         <h2 className="home_header">News</h2>
         <div className="home_item_wrapper">
+          <Filter />
+          <div className="bottom_Section">
+            
           <MainItems newsApiItem={selectorNewsApi} guardianItems={selectorGuardianApi} selectorTimesApi={selectorTimesApi}/>
-          <PersonalSection />
+          </div>
         </div>
       </div>
     </div>

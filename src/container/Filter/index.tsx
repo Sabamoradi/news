@@ -8,7 +8,7 @@ import { selectTimesData, setShowTimes } from "../../store/times/slice";
 import "./style.scss";
 import { selectAllCategories } from "../../store/general/slice";
 
-const PersonalSection = () => {
+const Filter = () => {
   const [source, setSources] = useState(0);
   const [category, setCategory] = useState("");
   const disptach = useDispatch();
@@ -40,19 +40,17 @@ const PersonalSection = () => {
 
 
   const filterData = (data:string) =>{
-    console.log(allCategories);
     setCategory(data)
     const newData = selectorGuardianApi.filter((el:any)=>{
       return el.pillarName === data
     })
-    console.log(newData,allCategories);
     
     disptach(setGuardianData(newData))
   }
 
   return (
     <div className="personal_container">
-      <h3>Picks for you</h3>
+      <h3>Filter</h3>
       <div className="bottom_Section">
         <p className="item_title">Source</p>
         <div className="bottom_item_wrapper">
@@ -87,4 +85,4 @@ const PersonalSection = () => {
   );
 };
 
-export default PersonalSection;
+export default Filter;

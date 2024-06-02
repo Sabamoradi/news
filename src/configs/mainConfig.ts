@@ -28,3 +28,22 @@ export const sourcesConfig = [
     title:"New York Times"
   },
 ]
+
+export interface MenuItem{
+  id:number,
+  route:string,
+  title:string
+}
+export const menuItem  = [
+  {
+    id:1,
+    route:'/',
+    title:"Home"
+  },
+  {
+    id:2,
+    route:'/you',
+    title:"For You"
+  },
+  
+]

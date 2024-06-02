@@ -1,14 +1,27 @@
 @use "src/styles/main.scss" as *;
 
-
-.header_container{
-    padding: toRem(20) 0;
+.header_container {
+  padding: toRem(20) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .input_wrapper {
+    width: 60%;
+    padding-right: toRem(20);
+  }
+  .menu_wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    .input_wrapper{
-        width: 60%;
-        padding-right: toRem(20);
+    margin-top: toRem(20);
+    .menu_item {
+      padding: 0 toRem(10);
+      cursor: pointer;
+      &[data-is-selected="true"] {
+        p {
+          color: $red;
+          font-weight: 500;
+        }
+      }
     }
+  }
 }
