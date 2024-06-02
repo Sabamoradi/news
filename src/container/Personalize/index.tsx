@@ -15,6 +15,7 @@ import { getNewsAPiThunk } from "../../store/newApi/thunks";
 import { getGuardianDataThunk } from "../../store/guardian/thunks";
 import { getTimesDataThunk } from "../../store/times/thunks";
 import MainItems from "../MainItems";
+import { GuardianData } from "../../store/guardian/types";
 
 const Personalize = () => {
   const [source, setSources] = useState(0);
@@ -44,7 +45,7 @@ const Personalize = () => {
 
   const filterData = (data: string) => {
     setCategory(data);
-    const newData = selectorGuardianApi.filter((el: any) => {
+    const newData = selectorGuardianApi.filter((el: GuardianData) => {
       return el.pillarName === data;
     });
 

@@ -8,11 +8,14 @@ import "./style.scss";
 import { newsApiCategories } from "../../configs/mainConfig";
 import { useDispatch } from "react-redux";
 import { setAllCategories } from "../../store/general/slice";
+import { GuardianData } from "../../store/guardian/types";
+import { TimesData } from "../../store/times/types";
+import { NewsApiData } from "../../store/newApi/types";
 
 interface Props {
-  newsApiItem?: any;
-  guardianItems?: any;
-  selectorTimesApi?: any;
+  newsApiItem: NewsApiData[];
+  guardianItems: GuardianData[];
+  selectorTimesApi: TimesData[];
 }
 
 const MainItems = (props: Props) => {
@@ -24,12 +27,12 @@ const MainItems = (props: Props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const guardianCat = guardianItems.map((el: any) => el.pillarName);
-    const timesCat = selectorTimesApi.map((el: any) => el.section);
+    const guardianCat:string[]  = guardianItems.map((el: GuardianData) => el.pillarName);
+    const timesCat = selectorTimesApi.map((el: TimesData) => el.section);
     let allCategories = newsApiCategories.concat(guardianCat, timesCat);
 
-    allCategories = allCategories.filter(function (
-      item: any,
+    allCategories = allCategories?.filter(function (
+      item: string,
       index: number,
       inputArray: any
     ) {
@@ -44,7 +47,7 @@ const MainItems = (props: Props) => {
         {showNewsOrg !== false && (
           <>
             <p className="title_news">news.org</p>
-            {newsApiItem.map((el: any, index: number) => {
+            {newsApiItem?.map((el: NewsApiData, index: number) => {
               return (
                 <Item
                   key={`${index}-news`}
@@ -60,7 +63,7 @@ const MainItems = (props: Props) => {
         {showGuardian !== false && (
           <>
             <p className="title_news">Guardian</p>
-            {guardianItems.map((el: any, index: number) => {
+            {guardianItems.map((el: GuardianData, index: number) => {
               return (
                 <>
                   <Item
@@ -78,7 +81,7 @@ const MainItems = (props: Props) => {
         {showTimes !== false && (
           <>
             <p className="title_news">Times</p>
-            {selectorTimesApi.map((el: any, index: number) => {
+            {selectorTimesApi.map((el: TimesData, index: number) => {
               return (
                 <Item
                   key={`${index}-newsT`}

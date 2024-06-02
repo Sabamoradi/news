@@ -2,9 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ReduxState } from "../store";
 import { getTimesDataThunk, getTimesSearchDataThunk } from "./thunks";
 import { getTimesSearchData } from "./api";
+import { TimesData } from "./types";
 
 export interface State {
-  timesData: any;
+  timesData: TimesData[];
   showTimes:boolean | null
 }
 

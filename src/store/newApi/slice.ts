@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ReduxState } from "../store";
-import { newsApiData } from "./types";
+import { NewsApiData } from "./types";
 import { getNewsAPiSearchThunk, getNewsAPiThunk } from "./thunks";
 
 export interface State {
-  newsApiData: any;
-  newsApiSearch:any;
+  newsApiData: NewsApiData[];
+  newsApiSearch:NewsApiData[];
   showNewsOrg:boolean | null
 }
 

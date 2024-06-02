@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ReduxState } from "../store";
 import { getGuardianDataThunk } from "./thunks";
+import { GuardianData } from "./types";
 
 export interface State {
-  GuardianData: any;
+  GuardianData: GuardianData[];
   showGuardian: boolean | null;
   guardianCategories: string[];
 }

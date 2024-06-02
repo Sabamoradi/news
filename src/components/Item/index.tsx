@@ -2,7 +2,7 @@ import "./style.scss";
 
 interface Props {
   title: string;
-  author: string;
+  author: string | null;
 }
 
 const Item = (props: Props) => {

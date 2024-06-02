@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "../../store/store";
 import { selectTimesData, setShowTimes } from "../../store/times/slice";
 import "./style.scss";
 import { selectAllCategories } from "../../store/general/slice";
+import { GuardianData } from "../../store/guardian/types";
 
 const Filter = () => {
   const [source, setSources] = useState(0);
@@ -41,7 +42,7 @@ const Filter = () => {
 
   const filterData = (data:string) =>{
     setCategory(data)
-    const newData = selectorGuardianApi.filter((el:any)=>{
+    const newData = selectorGuardianApi.filter((el:GuardianData)=>{
       return el.pillarName === data
     })
     
